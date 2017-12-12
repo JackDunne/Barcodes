@@ -2,46 +2,47 @@ const Random = require('./Random.js');
 
 const EAN = function(){
 
-    let sysCode;//3 digits
-    let manCode;//5 digits
-    let proCode;//4 digits
+    let sysCode = makeSysCode();//3 digits
+    let manCode = makeManCode();//5 digits
+    let proCode =  makeProCode();//4 digits
     let checkDigit = check();
 
 
     function makeSysCode(){
         let r = Random().discreteRangeIn(1,8);
-        if(r == 1){
-            return "050";//UK
-        }
-        else if(r == 2){
-            return "012";//USA or Canada
-        }
-        else if(r == 3){
-            return "539";//Ireland
-        }
-        else if(r == 4){
+        if (r == 1){
             return "040";//Germany
         }
-        else if(r == 5){
-            return "690";//China
-        }
-        else if(r == 6){
-            return "893";//Vietnam
-        }
-        else if(r == 7){
+        else if (r == 2){
             return "070";//Norway
         }
-        else if(r == 8){
-            return "619";//Tunisia
+        else if (r == 3){
+            return "590";//Poland
         }
+        else if (r == 4){
+            return "003";//USA
+        }
+        else if (r == 5){
+            return "690"//China
+        }
+        else if (r == 6){
+            return "539";//Ireland
+        }
+        else if (r == 7){
+            return "741";//El Salvador
+        }
+        else if (r == 8){
+            return "093";//Australia
+        }
+
+
     }
     function makeManCode(){
-        return Random().digit(5);
+        return String(Random().digit(5));
     }
     function makeProCode(){
-        return Random().digit(7);
+        return String(Random().digit(4));
     }
-
     function check(){
         //create this function
         let code = sysCode+manCode+proCode;
@@ -63,7 +64,8 @@ const EAN = function(){
     }
 
     function read(){
-        //create this function
+        let code = sysCode+manCode+proCode;
+        return code + "-" + checkDigit;
 
     }
     return {sysCode,manCode,proCode,checkDigit,read};
@@ -72,6 +74,7 @@ const EAN = function(){
 function test(){
     let e = new EAN();
     console.log(e.checkDigit);
+    console.log(e.read());
 
 }
 //test();
