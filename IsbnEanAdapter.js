@@ -36,4 +36,4 @@ function test(){
     console.log(a.checkDigit);
     console.log(a.read());
 }
-test();
+//test();

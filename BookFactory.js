@@ -16,8 +16,8 @@ const BookFactory = function (){
 }
 
 function test(){
-    let b = new BookFactory(2009);
-    console.log(b.createBook().read());
+    let b = new BookFactory();
+    console.log(b.createBook(2009).read());
 }
 //test();
 module.exports = BookFactory;
