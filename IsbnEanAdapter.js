@@ -37,3 +37,4 @@ function test(){
     console.log(a.read());
 }
 //test();
+module.exports = IsbnEanAdapter;
