@@ -16,7 +16,7 @@ for(let a = 0;a<1000;a++){
     }
 }
 let numbers = [];
-for(let b = 0;b<bf.length;b++){
+for(let b = 0;b<list.length;b++){
     numbers.unshift(Number(list[b].code));
 }
-Sort.insertion(numbers);
+console.log(Sort.insertion(numbers));
